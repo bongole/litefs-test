@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  litefs-primary:
+    image: litefs-client:latest
+    devices:
+      - /dev/fuse:/dev/fuse
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - ./litefs-primary.yml:/etc/litefs.yml:ro
+    command: "sleep infinity"
+  litefs-replica1:
+    image: litefs-client:latest
+    devices:
+      - /dev/fuse:/dev/fuse
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - ./litefs-replica.yml:/etc/litefs.yml:ro
+    command: "sleep infinity"
