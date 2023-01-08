@@ -8,8 +8,8 @@ services:
       - SYS_ADMIN
     volumes:
       - ./litefs-primary.yml:/etc/litefs.yml:ro
-    command: "sleep infinity"
-  litefs-replica1:
+    command: "litefs mount"
+  litefs-replica:
     image: litefs-client:latest
     devices:
       - /dev/fuse:/dev/fuse
@@ -17,4 +17,4 @@ services:
       - SYS_ADMIN
     volumes:
       - ./litefs-replica.yml:/etc/litefs.yml:ro
-    command: "sleep infinity"
+    command: "litefs mount"
